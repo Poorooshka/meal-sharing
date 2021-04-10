@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 
-export default function AddReservation() {
+export default function Reservation({ id }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [guests, setGuests] = useState(0);
+
+  const saveReservation = () => {
+    const reservataion = {
+      meal_id: id,
+      number_of_guests: guests,
+      contact_phonenumber,
+      contact_name,
+      contact_email,
+    };
+
+    //send object to backend
+  };
 
   return (
     <div>
@@ -12,27 +24,27 @@ export default function AddReservation() {
       <label>Contact Name</label>
       <input
         type="text"
-        value={contactName}
+        value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <label>Contact Email</label>
       <input
         type="text"
-        value={contactEmail}
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <label>Contact Number</label>
       <input
-        type="number"
-        value={contactNumber}
+        type="text"
+        value={number}
         onChange={(e) => setNumber(+e.target.value)} //+"10" equals 10- converting string to numbers
       />
       <input
         type="number"
-        value={numberOfGuests}
+        value={guests}
         onChange={(e) => setGuests(+e.target.value)} //+"10" equals 10- converting string to numbers
       />
-      <button onClick={}>Create New meal</button>
+      <button onClick={saveReservation}>save reservation</button>
     </div>
   );
 }

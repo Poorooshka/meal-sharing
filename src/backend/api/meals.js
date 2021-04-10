@@ -5,8 +5,39 @@ const knex = require("../database");
 router.get("/", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const meals = await knex("meals").select("id", "title", "description");
+    const meals = await knex("meals").select("*");
     response.json(meals);
+  } catch (error) {
+    throw error;
+  }
+});
+
+router.get("/isavailable/:id", async (request, response) => {
+  try {
+    // knex syntax for selecting things. Look up the documentation for knex for further info
+    const mealId = parseInt(request.params.id);
+    const meals = await knex("meals").select("*").where({ id: mealId });
+    console.log(request.params.id);
+
+    const meal = await knex("reservations")
+      .select("meal_id")
+      .sum("number_of_guests")
+      .groupBy("meal_id")
+      .where({ meal_id: mealId });
+
+    const total = Object.keys(meal[0])[1];
+    //console.log(meal[0][total]);
+    let available = false;
+
+    if (meal.length > 0) {
+      if (meals[0].max_reservations > meal[0][total]) {
+        available = true;
+      }
+    } else {
+      available = true;
+    }
+
+    response.json(available);
   } catch (error) {
     throw error;
   }
@@ -41,24 +72,6 @@ router.get("/:id", async (request, response) => {
 
     const meal = await knex("meals").where({ id: mealId });
     response.send(meal[0]);
-  } catch (error) {
-    throw error;
-  }
-});
-
-router.post("/", async (request, response) => {
-  try {
-    // knex syntax for selecting things. Look up the documentation for knex for further info
-    console.log(request.body);
-    const reservataion = await knex("reservations").insert([
-      {
-        contact_name: request.body.contactName,
-        contact_email: request.body.contactEmail,
-        contact_number: request.body.contactNumber,
-        number_of_guests: request.body.numberOfGuests,
-      },
-    ]);
-    response.json(reservations);
   } catch (error) {
     throw error;
   }
