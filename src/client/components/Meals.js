@@ -43,6 +43,7 @@ export default function Meals() {
         ))}
 
         <div>
+          <h3>Intrested To Become a Host?</h3>
           <label>Title</label>
           <input
             type="text"
