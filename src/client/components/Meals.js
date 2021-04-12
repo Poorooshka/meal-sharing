@@ -8,13 +8,13 @@ export default function Meals() {
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/meals")
+    fetch("/api/meals")
       .then((response) => response.json())
       .then(setMeals);
   }, []);
 
   const createNewMeal = () => {
-    fetch("http://localhost:5000/api/meals", {
+    fetch("/api/meals", {
       method: "POST",
       body: JSON.stringify({ title, description, price }),
       headers: {
@@ -34,13 +34,14 @@ export default function Meals() {
       </header>
 
       <main>
-        {meals.map((meal) => (
-          <div key={meal.id}>
-            <h2>{meal.title}</h2>
-            <p>{meal.description}</p>
-            <Link to={`/meals/${meal.id}`}>Click here for more details</Link>
-          </div>
-        ))}
+        {meals &&
+          meals.map((meal) => (
+            <div key={meal.id}>
+              <h2>{meal.title}</h2>
+              <p>{meal.description}</p>
+              <Link to={`/meals/${meal.id}`}>Click here for more details</Link>
+            </div>
+          ))}
 
         <div>
           <h3>Intrested To Become a Host?</h3>

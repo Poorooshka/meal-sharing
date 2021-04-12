@@ -7,15 +7,25 @@ export default function Reservation({ id }) {
   const [guests, setGuests] = useState(0);
 
   const saveReservation = () => {
-    const reservataion = {
+    const reservation = {
       meal_id: id,
       number_of_guests: guests,
-      contact_phonenumber,
-      contact_name,
-      contact_email,
+      contact_phonenumber: number,
+      contact_name: name,
+      contact_email: email,
     };
-
-    //send object to backend
+    //sending the reservation object to the backend
+    fetch("/api/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reservation),
+    })
+      .then((response) => response.json())
+      .then((isAdded) => {
+        if (isAdded) alert("reservation added");
+      });
   };
 
   return (
