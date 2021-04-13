@@ -28,44 +28,38 @@ export default function Meals() {
   };
 
   return (
-    <div>
-      <header>
-        <h1> Meals </h1>
-      </header>
+    <main>
+      {meals &&
+        meals.map((meal) => (
+          <div key={meal.id}>
+            <h2>{meal.title}</h2>
+            <p>{meal.description}</p>
+            <Link to={`/meals/${meal.id}`}>Details</Link>
+          </div>
+        ))}
 
-      <main>
-        {meals &&
-          meals.map((meal) => (
-            <div key={meal.id}>
-              <h2>{meal.title}</h2>
-              <p>{meal.description}</p>
-              <Link to={`/meals/${meal.id}`}>Click here for more details</Link>
-            </div>
-          ))}
-
-        <div>
-          <h3>Intrested To Become a Host?</h3>
-          <label>Title</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label>description</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <label>Price</label>
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(+e.target.value)} //+"10" equals 10- converting string to numbers
-          />
-          <button onClick={createNewMeal}>Create New meal</button>
-        </div>
-      </main>
-    </div>
+      <div>
+        <h3>Interested To Become a Host?</h3>
+        <label>Title</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label>description</label>
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <label>Price</label>
+        <input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(+e.target.value)} //+"10" equals 10- converting string to numbers
+        />
+        <button onClick={createNewMeal}>Create New meal</button>
+      </div>
+    </main>
   );
 }

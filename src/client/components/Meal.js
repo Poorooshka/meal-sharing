@@ -10,7 +10,7 @@ export default function Meal() {
 
   useEffect(() => {
     //fetching specific meal with id
-    fetch(`http://localhost:5000/api/meals/${id}`)
+    fetch(`/api/meals/${id}`)
       .then((response) => response.json())
       .then((meal) => {
         setMeal(meal);
@@ -18,7 +18,7 @@ export default function Meal() {
   }, []);
 
   const checkAvailable = () => {
-    fetch(`http://localhost:5000/api/meals/isavailable/${id}`)
+    fetch(`/api/meals/isavailable/${id}`)
       .then((response) => response.json())
       .then((available) => {
         setAvailable(available);
@@ -26,21 +26,16 @@ export default function Meal() {
   };
 
   return (
-    <div>
-      <header>
-        <h1> Meal </h1>
-      </header>
-      <main>
-        <div>
-          <h2>{meal.title}</h2>
-          <h3>Description: {meal.description}</h3>
-          <h4> Price: {meal.price}</h4>
-        </div>
-        <div>
-          <button onClick={checkAvailable}>Book Reservation</button>
-        </div>
-        {available && <Reservation id={id} />}
-      </main>
-    </div>
+    <main className="container">
+      <div>
+        <h2>{meal.title}</h2>
+        <h3>Description: {meal.description}</h3>
+        <h4> Price: {meal.price}</h4>
+      </div>
+      <div>
+        <button onClick={checkAvailable}>Book Reservation</button>
+      </div>
+      {available && <Reservation id={id} />}
+    </main>
   );
 }

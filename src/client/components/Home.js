@@ -10,19 +10,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <header>
-        <h1> Home </h1>
-      </header>
-
-      <main>
-        {meals.map((meal) => (
-          <div key={meal.id}>
-            <h2>{meal.title}</h2>
-            <p>{meal.description}</p>
-          </div>
-        ))}
-      </main>
-    </div>
+    <main>
+      {meals.map((meal) => (
+        <div key={meal.id}>
+          <h2>{meal.title}</h2>
+          <p>{meal.description}</p>
+        </div>
+      ))}
+    </main>
   );
 }
