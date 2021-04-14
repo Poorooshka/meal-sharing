@@ -24,7 +24,13 @@ export default function Reservation({ id }) {
     })
       .then((response) => response.json())
       .then((isAdded) => {
-        if (isAdded) alert("reservation added");
+        if (isAdded) {
+          setName("");
+          setEmail("");
+          setNumber("");
+          setGuests(0);
+          alert("reservation added");
+        }
       });
   };
 
@@ -52,6 +58,7 @@ export default function Reservation({ id }) {
       <input
         type="number"
         value={guests}
+        min={0}
         onChange={(e) => setGuests(+e.target.value)} //+"10" equals 10- converting string to numbers
       />
       <button onClick={saveReservation}>save reservation</button>

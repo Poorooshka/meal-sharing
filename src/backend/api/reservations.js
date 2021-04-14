@@ -6,7 +6,7 @@ router.post("/", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
     console.log(request.body);
-    const reservataion = await knex("reservations").insert([
+    const reservation = await knex("reservations").insert([
       {
         meal_id: request.body.meal_id,
         number_of_guests: request.body.number_of_guests,
@@ -16,7 +16,7 @@ router.post("/", async (request, response) => {
       },
     ]);
 
-    response.json(reservations);
+    response.json(reservation);
   } catch (error) {
     throw error;
   }

@@ -3,9 +3,9 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <div class="container">
-        <div class="col-1-4">
-          <div class="footer-brand">
+      <div className="container">
+        <div className="col-1-4">
+          <div className="footer-brand">
             <a href="#">
               <img src="public/logo.png" alt="" />
             </a>
@@ -14,15 +14,15 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div class="col-1-4">
+        <div className="col-1-4">
           {" "}
           <p></p>
         </div>
-        <div class="col-1-4">
+        <div className="col-1-4">
           {" "}
           <p></p>
         </div>
-        <div class="col-1-4">
+        <div className="col-1-4">
           {" "}
           <p>Developed by Nashmil for Hack Your Future</p>
         </div>

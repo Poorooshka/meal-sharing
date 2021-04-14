@@ -25,6 +25,8 @@ router.get("/isavailable/:id", async (request, response) => {
       .groupBy("meal_id")
       .where({ meal_id: mealId });
 
+    console.log(meal);
+
     const total = Object.keys(meal[0])[1];
     //console.log(meal[0][total]);
     let available = false;
@@ -52,6 +54,7 @@ router.post("/", async (request, response) => {
         title: request.body.title,
         description: request.body.description,
         price: request.body.prices,
+        max_reservations: request.body.maxReservations,
       },
     ]);
     response.json(meal);

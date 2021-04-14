@@ -6,6 +6,7 @@ import Meals from "./components/Meals";
 import Meal from "./components/Meal";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import AddMeal from "./components/AddMeal";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       </Route>
       <Route exact path="/meals">
         <Meals />
+      </Route>
+      <Route exact path="/add">
+        <AddMeal />
       </Route>
       <Footer />
     </Router>

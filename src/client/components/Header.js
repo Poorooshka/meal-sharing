@@ -13,10 +13,10 @@ const Header = () => {
               <a href="/meals/">Meals</a>
             </li>
             <li>
-              <a href="">Reservations</a>
+              <a href="/add/">Add Meal</a>
             </li>
             <li>
-              <a href="">Add</a>
+              <a href="">Contact Us</a>
             </li>
           </ul>
         </div>
