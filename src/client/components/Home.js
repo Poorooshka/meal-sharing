@@ -6,7 +6,7 @@ export default function Home() {
   useEffect(() => {
     fetch("/api/meals")
       .then((response) => response.json())
-      .then(setMeals);
+      .then((meals) => setMeals(meals));
   }, []);
 
   return (

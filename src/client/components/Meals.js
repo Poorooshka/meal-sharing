@@ -11,7 +11,7 @@ export default function Meals() {
   useEffect(() => {
     fetch("/api/meals")
       .then((response) => response.json())
-      .then(setMeals);
+      .then((meals) => setMeals(meals));
   }, []);
 
   const createNewMeal = () => {
